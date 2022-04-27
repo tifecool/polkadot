@@ -1604,9 +1604,9 @@ impl<'a,K: From<usize>, V: Clone> Deref for TypeIndex<K, V> {
 
 	fn deref(&self) -> &Self::Target {
 		let mut values: Vec<(K,V)> = Vec::new();
-		for (key,  value) in self.0.into_iter_enumerated().collect_vec(){
+		for (key,  value) in self.0.iter_enumerated(){
 
-			values.push((key,value));
+			values.push((key,value.clone()));
 		}
 		&values
 	}
